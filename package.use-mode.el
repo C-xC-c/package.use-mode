@@ -68,7 +68,7 @@
      0 font-lock-constant-face t)))
 
 (define-derived-mode package.use-mode prog-mode "package.use"
-  :syntax-table nginx-mode-syntax-table
+  :syntax-table package.use-mode-syntax-table
   :keymap nil
   (set (make-local-variable 'comment-start) "# ")
   (set (make-local-variable 'comment-start-skip) "#+ *")
