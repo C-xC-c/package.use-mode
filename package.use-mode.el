@@ -3,7 +3,7 @@
 
 ;; Author: C-xC-c <boku@plum.moe
 ;; Created: July 2020
-;; Package-Version: 1.0.0
+;; Package-Version: 1.1.0
 ;; Keywords: gentoo, package.use 
 ;; URL: https://words.plum.moe/package.use-mode.html
 
@@ -26,7 +26,7 @@
 ;;; Commentary:
 ;; Emacs mode for Gentoo package.use
 ;;
-;;Thanks to nginx-mode where I stole most of this.
+;; Thanks to nginx-mode where I stole most of this.
 
 ;;; Code:
 
@@ -47,25 +47,25 @@
   (rx (group (1+ (any alnum "_" "." "+" "*" "-")))))
 
 (defvar package.use-font-lock-keywords
-      (list
-       ;; >=www-servers/
-       ;; www-servers/
-       `(,(concat package.use--version-bit package.use--catagory-bit)
-         . font-lock-function-name-face)
-       ;; >=nginx-1.19.1
-       ;; nginx
-       `(,(concat package.use--version-bit package.use--name-bit)
-         . font-lock-keyword-face)
-       ;; >=www-servers/nginx-1.19.1
-       ;; www-servers/nginx
-       `(,(concat package.use--version-bit package.use--catagory-bit package.use--name-bit)
-         (1 font-lock-variable-name-face t))
-       ;; dev-langs/python:3.7
-       `(,(rx ":" (1+ (any digit ".")))
-         0 font-lock-type-face t)
-       ;; www-servers/nginx NGINX_MODULES_HTTP:
-       `(,(rx (1+ whitespace) (1+ (any alnum "_" "-")) ":")
-         0 font-lock-constant-face t)))
+  (list
+   ;; >=www-servers/
+   ;; www-servers/
+   `(,(concat package.use--version-bit package.use--catagory-bit)
+     0 font-lock-function-name-face)
+   ;; >=nginx-1.19.1
+   ;; nginx
+   `(,(concat package.use--version-bit package.use--name-bit)
+     0 font-lock-keyword-face)
+   ;; >=www-servers/nginx-1.19.1
+   ;; www-servers/nginx
+   `(,(concat package.use--version-bit package.use--catagory-bit package.use--name-bit)
+     (1 font-lock-variable-name-face t))
+   ;; dev-langs/python:3.7
+   `(,(rx ":" (1+ (any digit ".")))
+     0 font-lock-type-face t)
+   ;; www-servers/nginx NGINX_MODULES_HTTP:
+   `(,(rx (1+ whitespace) (1+ (any alnum "_" "-")) ":")
+     0 font-lock-constant-face t)))
 
 (define-derived-mode package.use-mode prog-mode "package.use"
   :syntax-table nginx-mode-syntax-table
@@ -79,7 +79,7 @@
        '(package.use-font-lock-keywords nil)))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("package\\.use$"  . package.use-mode))
+(add-to-list 'auto-mode-alist '("package\.\\(use\\|accept_keywords\\|mask\\|unmask\\)\$" . package.use-mode))
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("/package\\.use/" . package.use-mode))
 
