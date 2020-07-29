@@ -29,7 +29,6 @@
 ;; Thanks to nginx-mode where I stole most of this.
 
 ;;; Code:
-
 (defvar package.use-mode-syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?# "< b" table)
@@ -40,11 +39,15 @@
 (defvar package.use--version-bit
   (rx line-start (? (or "=" ">" "<" ">=" "<="))))
 
+(defconst package.use--characters
+  `(1+ (any alnum "_" "." "+" "*" "-"))
+  "The characters allowed in a package.use catagory or name bit.")
+
 (defvar package.use--catagory-bit
-  (rx (1+ (any alnum "_" "." "+" "*" "-")) "/"))
+  (rx (eval package.use--characters) "/"))
 
 (defvar package.use--name-bit
-  (rx (group (1+ (any alnum "_" "." "+" "*" "-")))))
+  (rx (group (eval package.use--characters))))
 
 (defvar package.use-font-lock-keywords
   (list
