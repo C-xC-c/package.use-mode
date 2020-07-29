@@ -3,9 +3,10 @@
 
 ;; Author: C-xC-c <boku@plum.moe
 ;; Created: July 2020
-;; Package-Version: 1.1.0
-;; Keywords: gentoo, package.use 
+;; Package-Version: 1.2.0
+;; Keywords: languages, gentoo
 ;; URL: https://words.plum.moe/package.use-mode.html
+;; Package-Requires: ((emacs "24.1"))
 
 ;; This file is not part of GNU Emacs
 
@@ -82,7 +83,7 @@
        '(package.use-font-lock-keywords nil)))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("package\.\\(use\\|accept_keywords\\|mask\\|unmask\\)\$" . package.use-mode))
+(add-to-list 'auto-mode-alist `(,(rx "package." (or "use" "accept_keywords" "mask" "unmask" "license") eol) . package.use-mode))
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("/package\\.use/" . package.use-mode))
 
