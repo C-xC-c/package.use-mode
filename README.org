@@ -1,0 +1,18 @@
+* package.use-mode
+Syntax highlighting for Gentoo's =package.use= and friends. Mimics the
+behavior of =gentoo-vim-syntax=.
+
+** Install
+- Clone the repo
+- From within Emacs, do =M-x package-install-file
+  /path/to/repo/package.use-mode.el=
+
+** Usage
+You should be automatically put into package.use-mode when opening any
+of the following files:
+- package.use
+- package.mask
+- package.unmask
+- package.license
+- package.accept_keywords
+Any and all of these may also be a directory.
