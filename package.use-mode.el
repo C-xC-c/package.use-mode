@@ -74,13 +74,13 @@
 (define-derived-mode package.use-mode prog-mode "package.use"
   :syntax-table package.use-mode-syntax-table
   :keymap nil
-  (set (make-local-variable 'comment-start) "# ")
-  (set (make-local-variable 'comment-start-skip) "#+ *")
-  (set (make-local-variable 'comment-end) "")
-  (set (make-local-variable 'comment-auto-fill-only-comments) t)
-  (set (make-local-variable 'require-final-newline) t)
-  (set (make-local-variable 'font-lock-defaults)
-       '(package.use-font-lock-keywords nil)))
+  (setq-local comment-start "# ")
+  (setq-local comment-start-skip "#+ *")
+  (setq-local comment-end "")
+  (setq-local comment-auto-fill-only-comments t)
+  (setq-local require-final-newline t)
+  (setq-local font-lock-defaults
+              '(package.use-font-lock-keywords nil)))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist `(,(rx "package." (or "use" "accept_keywords" "mask" "unmask" "license") eol) . package.use-mode))
