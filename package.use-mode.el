@@ -71,6 +71,7 @@
    `(,(rx (1+ whitespace) (1+ (any alnum "_" "-")) ":")
      0 font-lock-constant-face t)))
 
+;;;###autoload
 (define-derived-mode package.use-mode prog-mode "package.use"
   :syntax-table package.use-mode-syntax-table
   :keymap nil
