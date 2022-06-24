@@ -1,7 +1,7 @@
 ;;; package.use-mode.el --- Emacs mode for editing Gentoo package.use files -*- lexical-binding: t; -*-
 ;; Copyright (C) 2020 C-xC-c
 
-;; Author: C-xC-c <boku@plum.moe
+;; Author: C-xC-c <boku@plum.moe>
 ;; Created: July 2020
 ;; Package-Version: 1.3.0
 ;; Keywords: languages, gentoo
